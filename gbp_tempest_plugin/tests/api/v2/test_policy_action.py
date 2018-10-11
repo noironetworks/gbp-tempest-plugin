@@ -22,10 +22,38 @@ class PolicyActionTest(base.BaseGbpV2Test):
         cls.set_network_resources()
         super(PolicyActionTest, cls).setup_credentials()
 
-    #@classmethod
-    #def setup_clients(cls):
-     #   super(PolicyActionTest, cls).setup_clients()
-     #   cls.client = cls.os_primary.policyaction_client
-    def test_hello_world(self):
-        pass
-        
+    @classmethod
+    def setup_clients(cls):
+        super(PolicyActionTest, cls).setup_clients()
+        cls.client = cls.os_primary.policyaction_client
+
+    def test_create_policy_action(self):
+        LOG.info('Create a policy action')
+        body = self.client.create_policy_action(name="test")
+        self.addCleanup(self.client.delete_policy_action, body['policy_action']['id'])
+        self.assertEqual("test", body['policy_action']['name'])
+
+    def test_list_policy_actions(self):
+        LOG.info('Create a policy action')
+        body = self.client.create_policy_action(name="test")
+        self.addCleanup(self.client.delete_policy_action, body['policy_action']['id'])
+        LOG.info('List policy actions')
+        body = self.client.list_policy_actions()
+        self.assertGreater(len(body['policy_actions']), 0)
+
+    def test_show_policy_action(self):
+        LOG.info('Create a policy action')
+        body = self.client.create_policy_action(name="test")
+        self.addCleanup(self.client.delete_policy_action, body['policy_action']['id'])
+        LOG.info('Fetch policy actions')
+        body = self.client.show_policy_action(body['policy_action']['id'])
+        self.assertEqual("test", body['policy_action']['name'])
+
+    def test_update_policy_action(self):
+        LOG.info('Create a policy action')
+        body = self.client.create_policy_action(name="test")
+        self.addCleanup(self.client.delete_policy_action, body['policy_action']['id'])
+        LOG.info('Update policy actions')
+        body = self.client.update_policy_action(body['policy_action']['id'], name="test2")
+        self.assertEqual("test2", body['policy_action']['name'])
+

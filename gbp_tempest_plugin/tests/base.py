@@ -1,6 +1,8 @@
 from tempest import test
 from tempest import config
 
+from gbp_tempest_plugin import clients
+
 CONF = config.CONF
 
 class BaseGbpTest(test.BaseTestCase):
@@ -11,7 +13,6 @@ class BaseGbpTest(test.BaseTestCase):
     @classmethod
     def skip_checks(cls):
         super(BaseGbpTest, cls).skip_checks()
-        print(CONF.service_available.gbp)
         if not CONF.service_available.gbp:
             skip_msg = ("%s skipped as GBP is not available"
                         % cls.__name__)
@@ -22,7 +23,7 @@ class BaseGbpV2Test(BaseGbpTest):
     """Base class for GBP V2 API tests."""
 
     # Use the GBP V2 Client Manager
-    #client_manager = clients.ManagerV2
+    client_manager = clients.ManagerV2
 
     @classmethod
     def skip_checks(cls):

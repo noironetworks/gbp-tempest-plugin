@@ -41,3 +41,14 @@ class GbpTempestPlugin(plugins.TempestPlugin):
            (project_config.gbp_group.name, project_config.GbpGroup),
            (project_config.gbp_feature_group.name, project_config.GbpFeatureGroup),
         ]
+
+    def get_service_clients(self):
+        gbp_config = config.service_client_config('gbp')
+        v2_params = {
+            'name': 'gbp_v2',
+            'service_version': 'gbp.v2',
+            'module_path': 'gbp_tempest_plugin.services.gbp.v2',
+            'client_names': ['PolicyActionClient']
+        }
+        v2_params.update(gbp_config)
+        return [v2_params]
