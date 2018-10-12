@@ -25,7 +25,7 @@ class PolicyActionTest(base.BaseGbpV2Test):
     @classmethod
     def setup_clients(cls):
         super(PolicyActionTest, cls).setup_clients()
-        cls.client = cls.os_primary.policyaction_client
+        cls.client = cls.os_primary.policy_action_client
 
     def test_create_policy_action(self):
         LOG.info('Create a policy action')

@@ -2,7 +2,8 @@ from tempest import clients
 from tempest import config
 from tempest.lib import auth
 
-from gbp_tempest_plugin.services.gbp.v2.json.policyaction_client import PolicyActionClient
+from gbp_tempest_plugin.services.gbp.v2.json.policy_action_client import PolicyActionClient
+from gbp_tempest_plugin.services.gbp.v2.json.policy_classifier_client import PolicyClassifierClient
 
 CONF = config.CONF
 
@@ -13,7 +14,8 @@ class ManagerV2(clients.Manager):
         self._init_clients(self._get_params())
 
     def _init_clients(self, params):
-        self.policyaction_client  = PolicyActionClient(**params)
+        self.policy_action_client  = PolicyActionClient(**params)
+        self.policy_classifier_client = PolicyClassifierClient(**params)
 
     def _get_params(self):
         params = dict(self.default_params)
