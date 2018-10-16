@@ -48,7 +48,7 @@ class GbpTempestPlugin(plugins.TempestPlugin):
             'name': 'gbp_v2',
             'service_version': 'gbp.v2',
             'module_path': 'gbp_tempest_plugin.services.gbp.v2',
-            'client_names': ['PolicyActionClient','PolicyClassifierClient']
+            'client_names': ['PolicyActionClient','PolicyClassifierClient', 'PolicyRuleClient, PolicyRuleSetClient']
         }
         v2_params.update(gbp_config)
         return [v2_params]
