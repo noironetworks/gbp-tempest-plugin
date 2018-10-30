@@ -10,7 +10,7 @@ class PolicyTargetGroupClient(base.GbpClientV2Base):
 
     resource = "/grouppolicy/policy_target_groups"
 
-    def create_policy_target_group(self, name, l3_policy_id, **kwargs):
+    def create_policy_target_group(self, name, **kwargs):
         """Create a Policy Target Group"""
         post_body = {'policy_target_group': {'name': name}}
         if kwargs.get('description'):

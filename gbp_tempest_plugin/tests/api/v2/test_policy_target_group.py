@@ -33,13 +33,13 @@ class PolicyTargetGroupTest(base.BaseGbpV2Test):
         self.addCleanup(self.client.delete_policy_target_group, body['policy_target_group']['id'])
         self.assertEqual("test", body['policy_target_group']['name'])
 
-    def test_list_l3_policies(self):
+    def test_list_policy_target_groups(self):
         LOG.info('Create an Application policy group')
         body = self.client.create_policy_target_group(name="test")
         self.addCleanup(self.client.delete_policy_target_group, body['policy_target_group']['id'])
         LOG.info('List Application policy groups')
-        body = self.client.list_l3_policies()
-        self.assertGreater(len(body['policy_target_group']), 0)
+        body = self.client.list_policy_target_groups()
+        self.assertGreater(len(body['policy_target_groups']), 0)
 
     def test_show_policy_target_group(self):
         LOG.info('Create an Application policy group')

@@ -10,7 +10,7 @@ class AppPolicyGroupClient(base.GbpClientV2Base):
 
     resource = "/grouppolicy/application_policy_groups"
 
-    def create_app_policy_group(self, name, l3_policy_id, **kwargs):
+    def create_app_policy_group(self, name, **kwargs):
         """Create an Application policy group"""
         post_body = {'application_policy_group': {'name': name}}
         if kwargs.get('description'):
