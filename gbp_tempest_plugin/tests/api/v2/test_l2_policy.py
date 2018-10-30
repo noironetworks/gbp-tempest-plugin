@@ -34,32 +34,32 @@ class L2PolicyTest(base.BaseGbpV2Test):
         self.addCleanup(self.l3_policy_client.delete_l3_policy, l3_policy['l3_policy']['id'])
 
         LOG.info('Create a L2 policy')
-        body = self.client.create_l2_policy(name, l3_policy_id=l3_policy['l3_policy']['id'])
+        body = self.client.create_l2_policy(name, l3_policy['l3_policy']['id'])
         self.addCleanup(self.client.delete_l2_policy, body['l2_policy']['id'])
         return body
 
     def test_create_l2_policy(self):
         LOG.info('Create a L2 policy')
         body = self._create_l2_policy("test")
-        self.assertEqual("test", body['policy_action']['name'])
+        self.assertEqual("test", body['l2_policy']['name'])
 
     def test_list_l2_policies(self):
         LOG.info('Create a L2 policy')
         body = self._create_l2_policy("test")
         LOG.info('List L2 policies')
-        body = self.client.list_policy_actions()
+        body = self.client.list_l2_policies()
         self.assertGreater(len(body['l2_policies']), 0)
 
     def test_show_l2_policy(self):
         LOG.info('Create a L2 policy')
         body = self._create_l2_policy("test")
         LOG.info('Fetch L2 policy')
-        body = self.client.show_policy_action(body['l2_policy']['id'])
+        body = self.client.show_l2_policy(body['l2_policy']['id'])
         self.assertEqual("test", body['l2_policy']['name'])
 
     def test_update_l2_policy(self):
         LOG.info('Create a L2 policy')
         body = self._create_l2_policy("test")
         LOG.info('Update L2 policy')
-        body = self.client.update_policy_action(body['l2_policy']['id'], name="test2")
+        body = self.client.update_l2_policy(body['l2_policy']['id'], name="test2")
         self.assertEqual("test2", body['l2_policy']['name'])

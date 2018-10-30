@@ -10,9 +10,9 @@ class L2PolicyClient(base.GbpClientV2Base):
 
     resource = "/grouppolicy/l2_policies"
 
-    def create_l2_policy(self, name, l2_policy_id, **kwargs):
+    def create_l2_policy(self, name, l3_policy_id, **kwargs):
         """Create a L2 policy"""
-        post_body = {'l2_policy': {'name': name, 'l2_policy_id': l2_policy_id}}
+        post_body = {'l2_policy': {'name': name, 'l3_policy_id': l3_policy_id}}
         if kwargs.get('description'):
             post_body['description'] = kwargs.get('description')
         post_body = json.dumps(post_body)

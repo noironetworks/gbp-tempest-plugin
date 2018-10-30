@@ -29,30 +29,30 @@ class L3PolicyTest(base.BaseGbpV2Test):
 
     def test_create_l3_policy(self):
         LOG.info('Create a L3 policy')
-        body = self.client.create_policy_action(name="test")
-        self.addCleanup(self.client.delete_policy_action, body['l3_policy']['id'])
-        self.assertEqual("test", body['policy_action']['name'])
+        body = self.client.create_l3_policy(name="test")
+        self.addCleanup(self.client.delete_l3_policy, body['l3_policy']['id'])
+        self.assertEqual("test", body['l3_policy']['name'])
 
     def test_list_l3_policies(self):
         LOG.info('Create a L3 policy')
-        body = self.client.create_policy_action(name="test")
-        self.addCleanup(self.client.delete_policy_action, body['l3_policy']['id'])
+        body = self.client.create_l3_policy(name="test")
+        self.addCleanup(self.client.delete_l3_policy, body['l3_policy']['id'])
         LOG.info('List L3 policies')
-        body = self.client.list_policy_actions()
+        body = self.client.list_l3_policies()
         self.assertGreater(len(body['l3_policies']), 0)
 
     def test_show_l3_policy(self):
         LOG.info('Create a L3 policy')
-        body = self.client.create_policy_action(name="test")
-        self.addCleanup(self.client.delete_policy_action, body['l3_policy']['id'])
+        body = self.client.create_l3_policy(name="test")
+        self.addCleanup(self.client.delete_l3_policy, body['l3_policy']['id'])
         LOG.info('Fetch L3 policy')
-        body = self.client.show_policy_action(body['l3_policy']['id'])
+        body = self.client.show_l3_policy(body['l3_policy']['id'])
         self.assertEqual("test", body['l3_policy']['name'])
 
     def test_update_l3_policy(self):
         LOG.info('Create a L3 policy')
-        body = self.client.create_policy_action(name="test")
-        self.addCleanup(self.client.delete_policy_action, body['l3_policy']['id'])
+        body = self.client.create_l3_policy(name="test")
+        self.addCleanup(self.client.delete_l3_policy, body['l3_policy']['id'])
         LOG.info('Update L3 policy')
-        body = self.client.update_policy_action(body['l3_policy']['id'], name="test2")
+        body = self.client.update_l3_policy(body['l3_policy']['id'], name="test2")
         self.assertEqual("test2", body['l3_policy']['name'])
