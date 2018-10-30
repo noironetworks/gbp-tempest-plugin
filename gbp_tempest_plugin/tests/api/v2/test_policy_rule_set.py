@@ -27,7 +27,7 @@ class PolicyRuleSetTest(base.BaseGbpV2Test):
         super(PolicyRuleSetTest, cls).setup_clients()
         cls.client = cls.os_primary.policy_rule_set_client
         cls.rule_client = cls.os_primary.policy_rule_client
-        cls.classifier_client = cls.os_primary.poicy_classifier_client
+        cls.classifier_client = cls.os_primary.policy_classifier_client
         cls.action_client = cls.os_primary.policy_action_client
 
     def _create_policy_rule_set(self, name):
