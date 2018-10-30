@@ -6,6 +6,8 @@ from gbp_tempest_plugin.services.gbp.v2.json.policy_action_client import PolicyA
 from gbp_tempest_plugin.services.gbp.v2.json.policy_classifier_client import PolicyClassifierClient
 from gbp_tempest_plugin.services.gbp.v2.json.policy_rule_client import PolicyRuleClient
 from gbp_tempest_plugin.services.gbp.v2.json.policy_rule_set_client import PolicyRuleSetClient
+from gbp_tempest_plugin.services.gbp.v2.json.l3_policy_client import L3PolicyClient
+from gbp_tempest_plugin.services.gbp.v2.json.l2_policy_client import L2PolicyClient
 
 CONF = config.CONF
 
@@ -20,6 +22,8 @@ class ManagerV2(clients.Manager):
         self.policy_classifier_client = PolicyClassifierClient(**params)
         self.policy_rule_client = PolicyRuleClient(**params)
         self.policy_rule_set_client = PolicyRuleSetClient(**params)
+        self.l3_policy_client = L3PolicyClient(**params)
+        self.l2_policy_client = L2PolicyClient(**params)
 
     def _get_params(self):
         params = dict(self.default_params)
