@@ -26,7 +26,7 @@ class PolicyRuleTest(base.BaseGbpV2Test):
     def setup_clients(cls):
         super(PolicyRuleTest, cls).setup_clients()
         cls.client = cls.os_primary.policy_rule_client
-        cls.classifier_client = cls.os_primary.poicy_classifier_client
+        cls.classifier_client = cls.os_primary.policy_classifier_client
         cls.action_client = cls.os_primary.policy_action_client
 
     def _create_policy_rule(self, name):
@@ -35,11 +35,11 @@ class PolicyRuleTest(base.BaseGbpV2Test):
         self.addCleanup(self.classifier_client.delete_policy_classifier, classifier['policy_classifier']['id'])
 
         LOG.info('Create a policy action')
-        action = self.action_client(name="test_rule")
+        action = self.action_client.create_policy_action(name="test_rule")
         self.addCleanup(self.action_client.delete_policy_action, action['policy_action']['id'])
 
         LOG.info('Create a policy rule')
-        body = self.client.create_policy_rule(name, classifier="test_classifier", action ="test_rule")
+        body = self.client.create_policy_rule(name, classifier['policy_classifier']['id'], [action['policy_action']['id']])
         self.addCleanup(self.client.delete_policy_rule, body['policy_rule']['id'])
         return body
 

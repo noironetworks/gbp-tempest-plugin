@@ -10,11 +10,9 @@ class PolicyRuleClient(base.GbpClientV2Base):
 
     resource = "/grouppolicy/policy_rules"
 
-    def create_policy_rule(self, name, classifier, **kwargs):
+    def create_policy_rule(self, name, policy_classifier_id, policy_actions, **kwargs):
         """Create a Policy Rule"""
-        post_body = {'policy_rule': {'name': name }}
-        if kwargs.get('actions'):
-            post_body['actions'] = kwargs.get('actions')
+        post_body = {'policy_rule': {'name': name, 'policy_classifier_id': policy_classifier_id, 'policy_actions': policy_actions}}
         if kwargs.get('description'):
             post_body['description'] = kwargs.get('description')
         post_body = json.dumps(post_body)

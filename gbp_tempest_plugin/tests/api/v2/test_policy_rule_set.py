@@ -36,15 +36,16 @@ class PolicyRuleSetTest(base.BaseGbpV2Test):
         self.addCleanup(self.classifier_client.delete_policy_classifier, classifier['policy_classifier']['id'])
 
         LOG.info('Create a policy action')
-        action = self.action_client(name="test_rule")
+        action = self.action_client.create_policy_action(name="test_rule")
         self.addCleanup(self.action_client.delete_policy_action, action['policy_action']['id'])
 
         LOG.info('Create a policy rule')
-        rule = self.rule_client.create_policy_rule(name, classifier="test_classifier", action ="test_rule")
-        self.addCleanup(self.client.delete_policy_rule_set, rule['policy_rule']['id'])
+        rule = self.rule_client.create_policy_rule(name, classifier['policy_classifier']['id'], [action['policy_action']['id']])
+        self.addCleanup(self.rule_client.delete_policy_rule, rule['policy_rule']['id'])
 
         LOG.info('Create a policy rule set')
-        body = self.client.create_policy_rule_set(name="test", policy_rules=['test_rule'])
+        body = self.client.create_policy_rule_set(name="test", policy_rules=[rule['policy_rule']['id']])
+        self.addCleanup(self.client.delete_policy_rule_set, body['policy_rule_set']['id'])
         return body
 
     def test_create_policy_rule_set(self):

@@ -8,7 +8,7 @@ from gbp_tempest_plugin.services.gbp.v2.json import base
 class PolicyRuleSetClient(base.GbpClientV2Base):
     """API V2 Tempest REST client for GBP Policy Rule Set API"""
 
-    resource = "/grouppolicy/policy_RuleSets"
+    resource = "/grouppolicy/policy_rule_sets"
 
     def create_policy_rule_set(self, name, **kwargs):
         """Create a Policy Rule Set"""
