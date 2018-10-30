@@ -8,6 +8,8 @@ from gbp_tempest_plugin.services.gbp.v2.json.policy_rule_client import PolicyRul
 from gbp_tempest_plugin.services.gbp.v2.json.policy_rule_set_client import PolicyRuleSetClient
 from gbp_tempest_plugin.services.gbp.v2.json.l3_policy_client import L3PolicyClient
 from gbp_tempest_plugin.services.gbp.v2.json.l2_policy_client import L2PolicyClient
+from gbp_tempest_plugin.services.gbp.v2.json.app_policy_group_client import AppPolicyGroupClient
+from gbp_tempest_plugin.services.gbp.v2.json.policy_target_group_client import PolicyTargetGroupClient
 
 CONF = config.CONF
 
@@ -24,6 +26,8 @@ class ManagerV2(clients.Manager):
         self.policy_rule_set_client = PolicyRuleSetClient(**params)
         self.l3_policy_client = L3PolicyClient(**params)
         self.l2_policy_client = L2PolicyClient(**params)
+        self.app_policy_group_client = AppPolicyGroupClient(**params)
+        self.policy_target_group_client = PolicyTargetGroupClient(**params)
 
     def _get_params(self):
         params = dict(self.default_params)
