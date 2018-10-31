@@ -62,7 +62,7 @@ class NATPoolTest(ExternalSegmentTest):
         nat_pool = self._create_nat_pool(name)
         LOG.info('Fetch a NAT pool')
         body = self.nat_client.show_nat_pool(nat_pool['id'])
-        self.assertEqual(name, nat_pool['name'])
+        self.assertEqual(name, body['nat_pool']['name'])
 
     def test_update_nat_pool(self):
         name = data_utils.rand_name(self.__class__.__name__)
