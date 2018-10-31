@@ -7,7 +7,7 @@ from gbp_tempest_plugin.tests import base
 
 LOG = logging.getLogger(__name__)
 
-class ServiceChainSpecTest(base.BaseGbpV2Test):
+class ServicechainSpecTest(base.BaseGbpV2Test):
 
     @classmethod
     def setup_credentials(cls):
@@ -20,40 +20,40 @@ class ServiceChainSpecTest(base.BaseGbpV2Test):
         # creation of other neutron resources. NOTE: it must go before the
         # super call
         cls.set_network_resources()
-        super(ServiceChainSpecTest, cls).setup_credentials()
+        super(ServicechainSpecTest, cls).setup_credentials()
 
     @classmethod
     def setup_clients(cls):
-        super(ServiceChainSpecTest, cls).setup_clients()
-        cls.client = cls.os_primary.service_chain_spec_client
+        super(ServicechainSpecTest, cls).setup_clients()
+        cls.client = cls.os_primary.servicechain_spec_client
 
-    def test_create_service_chain_spec(self):
-        LOG.info('Create a Service Chain Spec')
-        body = self.client.create_service_chain_spec(name="test")
-        self.addCleanup(self.client.delete_service_chain_spec, body['service_chain_spec']['id'])
-        self.assertEqual("test", body['service_chain_spec']['name'])
+    def test_create_servicechain_spec(self):
+        LOG.info('Create a Servicechain Spec')
+        body = self.client.create_servicechain_spec(name="test")
+        self.addCleanup(self.client.delete_servicechain_spec, body['servicechain_spec']['id'])
+        self.assertEqual("test", body['servicechain_spec']['name'])
 
-    def test_list_service_chain_specs(self):
-        LOG.info('Create a Service Chain Spec')
-        body = self.client.create_service_chain_spec(name="test")
-        self.addCleanup(self.client.delete_service_chain_spec, body['service_chain_spec']['id'])
-        LOG.info('List Service Chain Specs')
-        body = self.client.list_service_chain_specs()
-        self.assertGreater(len(body['service_chain_specs']), 0)
+    def test_list_servicechain_specs(self):
+        LOG.info('Create a Servicechain Spec')
+        body = self.client.create_servicechain_spec(name="test")
+        self.addCleanup(self.client.delete_servicechain_spec, body['servicechain_spec']['id'])
+        LOG.info('List Servicechain Specs')
+        body = self.client.list_servicechain_specs()
+        self.assertGreater(len(body['servicechain_specs']), 0)
 
-    def test_show_service_chain_spec(self):
-        LOG.info('Create a Service Chain Spec')
-        body = self.client.create_service_chain_spec(name="test")
-        self.addCleanup(self.client.delete_service_chain_spec, body['service_chain_spec']['id'])
-        LOG.info('Fetch Service Chain Specs')
-        body = self.client.show_service_chain_spec(body['service_chain_spec']['id'])
-        self.assertEqual("test", body['service_chain_spec']['name'])
+    def test_show_servicechain_spec(self):
+        LOG.info('Create a Servicechain Spec')
+        body = self.client.create_servicechain_spec(name="test")
+        self.addCleanup(self.client.delete_servicechain_spec, body['servicechain_spec']['id'])
+        LOG.info('Fetch Servicechain Specs')
+        body = self.client.show_servicechain_spec(body['servicechain_spec']['id'])
+        self.assertEqual("test", body['servicechain_spec']['name'])
 
-    def test_update_service_chain_spec(self):
-        LOG.info('Create a Service Chain Spec')
-        body = self.client.create_service_chain_spec(name="test")
-        self.addCleanup(self.client.delete_service_chain_spec, body['service_chain_spec']['id'])
-        LOG.info('Update Service Chain Specs')
-        body = self.client.update_service_chain_spec(body['service_chain_spec']['id'], name="test2")
-        self.assertEqual("test2", body['service_chain_spec']['name'])
+    def test_update_servicechain_spec(self):
+        LOG.info('Create a Servicechain Spec')
+        body = self.client.create_servicechain_spec(name="test")
+        self.addCleanup(self.client.delete_servicechain_spec, body['servicechain_spec']['id'])
+        LOG.info('Update Servicechain Specs')
+        body = self.client.update_servicechain_spec(body['servicechain_spec']['id'], name="test2")
+        self.assertEqual("test2", body['servicechain_spec']['name'])
 
