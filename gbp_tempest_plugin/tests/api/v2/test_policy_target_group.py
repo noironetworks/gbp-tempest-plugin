@@ -28,31 +28,31 @@ class PolicyTargetGroupTest(base.BaseGbpV2Test):
         cls.client = cls.os_primary.policy_target_group_client
 
     def test_create_policy_target_group(self):
-        LOG.info('Create an Application policy group')
+        LOG.info('Create a policy target group')
         body = self.client.create_policy_target_group(name="test")
         self.addCleanup(self.client.delete_policy_target_group, body['policy_target_group']['id'])
         self.assertEqual("test", body['policy_target_group']['name'])
 
     def test_list_policy_target_groups(self):
-        LOG.info('Create an Application policy group')
+        LOG.info('Create a policy target group')
         body = self.client.create_policy_target_group(name="test")
         self.addCleanup(self.client.delete_policy_target_group, body['policy_target_group']['id'])
-        LOG.info('List Application policy groups')
+        LOG.info('List policy target groups')
         body = self.client.list_policy_target_groups()
         self.assertGreater(len(body['policy_target_groups']), 0)
 
     def test_show_policy_target_group(self):
-        LOG.info('Create an Application policy group')
+        LOG.info('Create a policy target group')
         body = self.client.create_policy_target_group(name="test")
         self.addCleanup(self.client.delete_policy_target_group, body['policy_target_group']['id'])
-        LOG.info('Fetch an Application policy group')
+        LOG.info('Fetch a policy target group')
         body = self.client.show_policy_target_group(body['policy_target_group']['id'])
         self.assertEqual("test", body['policy_target_group']['name'])
 
     def test_update_policy_target_group(self):
-        LOG.info('Create an Application policy group')
+        LOG.info('Create a policy target group')
         body = self.client.create_policy_target_group(name="test")
         self.addCleanup(self.client.delete_policy_target_group, body['policy_target_group']['id'])
-        LOG.info('Update an Application policy group')
+        LOG.info('Update a policy target group')
         body = self.client.update_policy_target_group(body['policy_target_group']['id'], name="test2")
         self.assertEqual("test2", body['policy_target_group']['name'])
