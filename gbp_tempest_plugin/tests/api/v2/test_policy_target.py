@@ -28,7 +28,7 @@ class PolicyTargetTest(base.BaseGbpV2Test):
         cls.client = cls.os_primary.policy_target_client
         cls.policy_target_group_client = cls.os_primary.policy_target_group_client
 
-    def _create_polict_target(self, name):
+    def _create_policy_target(self, name):
         LOG.info('Create an policy target group')
         policy_target_group = self.policy_target_group_client.create_policy_target_group(name="test")
         self.addCleanup(self.policy_target_group_client.delete_policy_target_group, policy_target_group['policy_target_group']['id'])
