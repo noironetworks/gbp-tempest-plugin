@@ -11,7 +11,7 @@ from gbp_tempest_plugin.services.gbp.v2.json.network_service_policy_client impor
 from gbp_tempest_plugin.services.gbp.v2.json.external_policy_client import ExternalPolicyClient
 from gbp_tempest_plugin.services.gbp.v2.json.external_segment_client import ExternalSegmentClient
 from gbp_tempest_plugin.services.gbp.v2.json.nat_pool_client import NATPoolClient
-from gbp_tempest_plugin.services.gbp.v2.json.servicechain_spec_client import ServiceChainSpecClient
+from gbp_tempest_plugin.services.gbp.v2.json.servicechain_spec_client import ServicechainSpecClient
 
 __all__ = ['PolicyActionClient', 'PolicyClassifierClient', 'PolicyRuleClient', 'PolicyRuleSetClient', 
            'L3PolicyClient', 'L2PolicyClient', 'AppPolicyGroupClient', 'PolicyTargetGroupClient', 

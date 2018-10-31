@@ -15,7 +15,7 @@ from gbp_tempest_plugin.services.gbp.v2.json.network_service_policy_client impor
 from gbp_tempest_plugin.services.gbp.v2.json.external_policy_client import ExternalPolicyClient
 from gbp_tempest_plugin.services.gbp.v2.json.external_segment_client import ExternalSegmentClient
 from gbp_tempest_plugin.services.gbp.v2.json.nat_pool_client import NATPoolClient
-from gbp_tempest_plugin.services.gbp.v2.json.servicechain_spec_client import ServiceChainSpecClient
+from gbp_tempest_plugin.services.gbp.v2.json.servicechain_spec_client import ServicechainSpecClient
 
 CONF = config.CONF
 
@@ -39,7 +39,7 @@ class ManagerV2(clients.Manager):
         self.external_segment_client = ExternalSegmentClient(**params)
         self.external_policy_client = ExternalPolicyClient(**params)
         self.nat_pool_client = NATPoolClient(**params)
-        self.service_chain_spec_client = ServiceChainSpecClient(**params)
+        self.servicechain_spec_client = ServicechainSpecClient(**params)
 
     def _get_params(self):
         params = dict(self.default_params)
