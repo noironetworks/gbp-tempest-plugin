@@ -11,6 +11,7 @@ from gbp_tempest_plugin.services.gbp.v2.json.l2_policy_client import L2PolicyCli
 from gbp_tempest_plugin.services.gbp.v2.json.app_policy_group_client import AppPolicyGroupClient
 from gbp_tempest_plugin.services.gbp.v2.json.policy_target_group_client import PolicyTargetGroupClient
 from gbp_tempest_plugin.services.gbp.v2.json.policy_target_client import PolicyTargetClient
+from gbp_tempest_plugin.services.gbp.v2.json.network_service_policy_client import NetworkServicePolicy
 
 CONF = config.CONF
 
@@ -30,6 +31,7 @@ class ManagerV2(clients.Manager):
         self.app_policy_group_client = AppPolicyGroupClient(**params)
         self.policy_target_group_client = PolicyTargetGroupClient(**params)
         self.policy_target_client = PolicyTargetClient(**params)
+        self.network_service_policy_client = NetworkServicePolicy(**params)
 
     def _get_params(self):
         params = dict(self.default_params)
