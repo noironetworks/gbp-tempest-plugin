@@ -10,6 +10,7 @@ from gbp_tempest_plugin.services.gbp.v2.json.l3_policy_client import L3PolicyCli
 from gbp_tempest_plugin.services.gbp.v2.json.l2_policy_client import L2PolicyClient
 from gbp_tempest_plugin.services.gbp.v2.json.app_policy_group_client import AppPolicyGroupClient
 from gbp_tempest_plugin.services.gbp.v2.json.policy_target_group_client import PolicyTargetGroupClient
+from gbp_tempest_plugin.services.gbp.v2.json.policy_target_client import PolicyTargetClient
 
 CONF = config.CONF
 
@@ -28,6 +29,7 @@ class ManagerV2(clients.Manager):
         self.l2_policy_client = L2PolicyClient(**params)
         self.app_policy_group_client = AppPolicyGroupClient(**params)
         self.policy_target_group_client = PolicyTargetGroupClient(**params)
+        self.policy_target_client = PolicyTargetClient(**params)
 
     def _get_params(self):
         params = dict(self.default_params)
