@@ -10,11 +10,11 @@ class ExternalSegmentClient(base.GbpClientV2Base):
 
     resource = "/grouppolicy/external_segments"
 
-    def create_external_segment(self, name, **kwargs):
+    def create_external_segment(self, name,subnet_id, **kwargs):
         """Create an External Segment"""
-        post_body = {'external_segment': {'name': name}}
+        post_body = {'external_segment': {'name': name, 'subnet_id': subnet_id}}
         if kwargs.get('description'):
-            post_body['description'] = kwargs.get('description')
+            post_body['external_segment']['description'] = kwargs.get('description')
         post_body = json.dumps(post_body)
         resp, body = self.post(self.get_uri(self.resource), post_body)
         body = json.loads(body)
