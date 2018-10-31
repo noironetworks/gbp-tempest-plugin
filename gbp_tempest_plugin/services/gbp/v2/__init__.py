@@ -8,5 +8,9 @@ from gbp_tempest_plugin.services.gbp.v2.json.app_policy_group_client import AppP
 from gbp_tempest_plugin.services.gbp.v2.json.policy_target_group_client import PolicyTargetGroupClient
 from gbp_tempest_plugin.services.gbp.v2.json.policy_target_client import PolicyTargetClient
 from gbp_tempest_plugin.services.gbp.v2.json.network_service_policy_client import NetworkServicePolicyClient
+from gbp_tempest_plugin.services.gbp.v2.json.external_policy_client import ExternalPolicyClient
+from gbp_tempest_plugin.services.gbp.v2.json.external_segment_client import ExternalSegmentClient
 
-__all__ = ['PolicyActionClient', 'PolicyClassifierClient', 'PolicyRuleClient', 'PolicyRuleSetClient', 'L3PolicyClient', 'L2PolicyClient', 'AppPolicyGroupClient', 'PolicyTargetGroupClient', 'PolicyTargetClient', 'NetworkServicePolicyClient']
+__all__ = ['PolicyActionClient', 'PolicyClassifierClient', 'PolicyRuleClient', 'PolicyRuleSetClient', 
+           'L3PolicyClient', 'L2PolicyClient', 'AppPolicyGroupClient', 'PolicyTargetGroupClient', 
+           'PolicyTargetClient', 'NetworkServicePolicyClient', 'ExternalPolicyClient', 'ExternalSegmentClient']
