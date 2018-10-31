@@ -10,9 +10,9 @@ class NATPoolClient(base.GbpClientV2Base):
 
     resource = "/grouppolicy/nat_pools"
 
-    def create_nat_pool(self, name, **kwargs):
+    def create_nat_pool(self, name, external_segment_id, ip_pool, **kwargs):
         """Create a NAT Pool"""
-        post_body = {'nat_pool': {'name': name}}
+        post_body = {'nat_pool': {'name': name, 'external_segment_id': external_segment_id, 'ip_pool': ip_pool}}
         if kwargs.get('description'):
             post_body['nat_pool']['description'] = kwargs.get('description')
         post_body = json.dumps(post_body)
