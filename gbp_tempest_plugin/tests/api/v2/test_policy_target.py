@@ -41,7 +41,7 @@ class PolicyTargetTest(base.BaseGbpV2Test):
         body = self._create_policy_target("test")
         self.assertEqual("test", body['policy_target']['name'])
 
-    def test_list_policy_target(self):
+    def test_list_policy_targets(self):
         body = self._create_policy_target("test")
         LOG.info('List Application policy groups')
         body = self.client.list_policy_targets()
