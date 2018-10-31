@@ -51,7 +51,7 @@ class GbpTempestPlugin(plugins.TempestPlugin):
             'client_names': ['PolicyActionClient', 'PolicyClassifierClient', 'PolicyRuleClient', 'PolicyRuleSetClient', 
                              'L3PolicyClient', 'L2PolicyClient', 'AppPolicyGroupClient', 'PolicyTargetGroupClient', 
                              'PolicyTargetClient', 'NetworkServicePolicyClient', 'ExternalPolicyClient', 'ExternalSegmentClient',
-                             'NATPoolClient', 'ServiceChainSpecClient']
+                             'NATPoolClient', 'ServiceChainSpecClient', 'ServiceProfileClient']
         }
         v2_params.update(gbp_config)
         return [v2_params]
