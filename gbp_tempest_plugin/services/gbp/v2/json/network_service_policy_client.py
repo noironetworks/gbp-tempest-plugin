@@ -5,7 +5,7 @@ from oslo_serialization import jsonutils as json
 
 from gbp_tempest_plugin.services.gbp.v2.json import base
 
-class NetworkServicePolicy(base.GbpClientV2Base):
+class NetworkServicePolicyClient(base.GbpClientV2Base):
     """API V2 Tempest REST client for GBP Network Service Policy API"""
 
     resource = "/grouppolicy/network_service_policies"
