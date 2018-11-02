@@ -10,9 +10,9 @@ class ServiceProfileClient(base.GbpClientV2Base):
 
     resource = "/grouppolicy/service_profiles"
 
-    def create_service_profile(self, name, **kwargs):
+    def create_service_profile(self, name, service_type, vendor, **kwargs):
         """Create a Service Profile"""
-        post_body = {'service_profile': {'name': name}}
+        post_body = {'service_profile': {'name': name, 'vendor': vendor, 'service_type': service_type}}
         if kwargs.get('description'):
             post_body['service_profile']['description'] = kwargs.get('description')
         post_body = json.dumps(post_body)
